@@ -13,11 +13,13 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.envers.AuditOverride;
 
 @Entity
-@Getter
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @AuditOverride(forClass = BaseEntity.class)
@@ -36,7 +38,7 @@ public class Customer extends BaseEntity {
 
 	private LocalDateTime verifyExpiredAt;
 	private String verificationCode;
-	private Boolean verify;
+	private boolean verify;
 
 	public static Customer from(SignUpForm form) {
 		return Customer.builder()
@@ -45,6 +47,7 @@ public class Customer extends BaseEntity {
 			.name(form.getName())
 			.birth(form.getBirth())
 			.phone(form.getPhone())
+			.verify(false)
 			.build();
 	}
 }
