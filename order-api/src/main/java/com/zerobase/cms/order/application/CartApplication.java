@@ -39,6 +39,11 @@ public class CartApplication {
 		return cartService.addCart(customerId, form);
 	}
 
+	public Cart updateCart(Long customerId, Cart cart) {
+		cartService.putCart(customerId, cart);
+		return getCart(customerId);
+	}
+
 	public Cart getCart(Long customerId) {
 
 		Cart cart = refreshCart(cartService.getCart(customerId));
