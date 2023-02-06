@@ -27,20 +27,37 @@ class ProductServiceTest {
 	void ADD_PRODUCT_TEST() {
 		Long sellerId = 1L;
 
-		AddProductForm form = makeProductForm("코카콜라", "음료", 3);
+		AddProductForm form = makeProductForm("상품", "설명", 3);
 
 		Product p = productService.addProduct(sellerId, form);
 
 		Product result = productRepository.findWithProductItemsById(p.getId()).get();
 
 		assertNotNull(result);
-		assertEquals(result.getName(),"코카콜라");
+		assertEquals(result.getName(),"상품");
 		assertEquals(result.getSellerId(),1L);
-		assertEquals(result.getDescription(),"음료");
+		assertEquals(result.getDescription(),"설명");
 		assertEquals(result.getProductItems().size(),3);
-		assertEquals(result.getProductItems().get(0).getName(),"코카콜라0");
+		assertEquals(result.getProductItems().get(0).getName(),"상품");
 		assertEquals(result.getProductItems().get(0).getPrice(),10000);
 		assertEquals(result.getProductItems().get(0).getCount(),1);
+	}
+
+	@Test
+	@Transactional
+	void DELETE_PRODUCT_TEST() {
+		Long sellerId = 1L;
+
+		AddProductForm form = makeProductForm("상품", "설명", 3);
+
+		Product p = productService.addProduct(sellerId, form);
+
+		productService.deleteProduct(sellerId, p.getId());
+
+		Product result = productRepository.findById(p.getId()).orElse(null);
+
+		assertEquals(p.getName(),"상품");
+		assertNull(result);
 	}
 
 	private static AddProductForm makeProductForm(String name, String description, int itemCount) {
