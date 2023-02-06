@@ -1,0 +1,73 @@
+### 회원가입 (고객)
+POST http://localhost:8080/signUp/customer
+Content-Type: application/json
+
+{
+  "birth": "1997-06-26",
+  "email": "wjddk2940@gmail.com",
+  "name": "junga",
+  "password": "junga",
+  "phone": "01011111111"
+}
+
+### 이메일 인증 ( 고객)
+GET http://localhost:8080/signUp/customer/verify?email=sis02064@daum.net&code=bqsYotcmpv
+Content-Type: application/json
+
+### 로그인
+POST http://localhost:8080/signIn/customer
+Content-Type: application/json
+
+{
+  "email": "wjddk2940@gmail.com",
+  "password": "junga"
+}
+
+
+### 회원정보 조회
+GET http://localhost:8080/customer/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN:
+
+
+
+### 잔액변경
+POST http://localhost:8080/customer/balance
+Content-Type: application/json
+X-AUTH-TOKEN:
+
+{
+  "from": "admin",
+  "message": "money",
+  "money": 50000
+}
+
+### 회원가입 (셀러)
+POST http://localhost:8080/signUp/seller
+Content-Type: application/json
+
+{
+  "birth": "2023-01-01",
+  "email": "wjddk2940@gmail.com",
+  "name": "jungaaa",
+  "password": "jungaaa",
+  "phone": "01011111111"
+}
+### 이메일 인증 (셀러)
+PUT http://localhost:8080/signUp/seller/verify?email=ewb.doohyun@gmail.com&code=qpY6y7eBbx
+Content-Type: application/json
+
+### 로그인(셀러)
+POST http://localhost:8080/signIn/seller
+Content-Type: application/json
+
+{
+  "email": "wjddk2940@gmail.com",
+  "password": "jungaaa"
+}
+
+
+### 회원정보 조회
+GET http://localhost:8080/seller/getInfo
+Content-Type: application/json
+X-AUTH-TOKEN:
