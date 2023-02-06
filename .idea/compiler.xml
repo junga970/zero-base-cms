@@ -9,6 +9,7 @@
         </processorPath>
         <module name="zerobase-cms.user-api.main" />
         <module name="zerobase-cms.zerobase-domain.main" />
+        <module name="zerobase-cms.order-api.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11" />
